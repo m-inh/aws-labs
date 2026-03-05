@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>My First Webpage</title>
+    </head>
+    <body>
+        <h1>I love coffee</h1>
+        <p>Hello world!</p>
+    </body>
+
+    <img src="./static/beach.jpg" width=500/>
+
+    <!-- API demo -->
+    <h2 id="api"/>
+    <script>
+        var api = document.getElementById("api");
+
+        fetch('https://okmen.site/api/now')
+            .then((response) => {
+                return response.text();
+            })
+            .then((html) => {
+                api.innerHTML = html
+            });
+    </script>
+
+    <!-- CORS demo -->
+    <div id="tofetch"/>
+    <script>
+        var tofetch = document.getElementById("tofetch");
+
+        fetch('https://okmen-website-v1.s3.ap-northeast-1.amazonaws.com/index-cf.html')
+        .then((response) => { 
+            return response.text();
+        })
+        .then((html) => {
+            tofetch.innerHTML = html     
+        });
+    </script>
+</html>
+

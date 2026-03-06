@@ -1,0 +1,55 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ProtectSecurityRoles",
+      "Effect": "Deny",
+      "Action": [
+        "iam:AttachRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:CreatePolicyVersion",
+        "iam:SetDefaultPolicyVersion"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "FreezeS3LogBucket",
+      "Effect": "Deny",
+      "Action": [
+        "s3:DeleteBucket",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion"
+      ],
+      "Resource": [
+        "arn:aws:s3:::conmeo2025-org-trail-logs",
+        "arn:aws:s3:::conmeo2025-org-trail-logs/*"
+      ]
+    },
+    {
+      "Sid": "FreezeGuardDuty",
+      "Effect": "Deny",
+      "Action": [
+        "guardduty:DeleteDetector",
+        "guardduty:DisassociateFromMasterAccount"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "FreezeAWSConfig",
+      "Effect": "Deny",
+      "Action": [
+        "config:DeleteConfigRule",
+        "config:StopConfigurationRecorder",
+        "config:DeleteDeliveryChannel"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "FreezeKMS",
+      "Effect": "Deny",
+      "Action": "kms:ScheduleKeyDeletion",
+      "Resource": "*"
+    }
+  ]
+}

@@ -39,8 +39,11 @@
       "Sid": "FreezeAWSConfig",
       "Effect": "Deny",
       "Action": [
+        "config:DeleteOrganizationConfigRule",
+        "config:PutOrganizationConfigRule",
         "config:DeleteConfigRule",
         "config:StopConfigurationRecorder",
+        "config:DeleteConfigurationRecorder",
         "config:DeleteDeliveryChannel"
       ],
       "Resource": "*"
